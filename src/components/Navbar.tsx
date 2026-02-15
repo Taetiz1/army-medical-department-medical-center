@@ -23,6 +23,7 @@ const Navbar: React.FC<Props> = ({ current, onNavigate }) => {
           <button aria-current={current==='rights' ? 'page' : undefined} className={`px-3 py-2 rounded ${current==='rights'?'bg-army-green text-white':'text-gray-700 hover:bg-gray-100'}`} onClick={()=>onNavigate('rights')}>สิทธิ</button>
           <button aria-current={current==='after' ? 'page' : undefined} className={`px-3 py-2 rounded ${current==='after'?'bg-army-green text-white':'text-gray-700 hover:bg-gray-100'}`} onClick={()=>onNavigate('after')}>หลังการรักษา</button>
           <button aria-current={current==='news' ? 'page' : undefined} className={`px-3 py-2 rounded ${current==='news'?'bg-army-green text-white':'text-gray-700 hover:bg-gray-100'}`} onClick={()=>onNavigate('news')}>ข่าว</button>
+          <button aria-current={current==='faq' ? 'page' : undefined} className={`px-3 py-2 rounded ${current==='faq'?'bg-army-green text-white':'text-gray-700 hover:bg-gray-100'}`} onClick={()=>onNavigate('faq')}>FAQ</button>
           <button aria-current={current==='contact' ? 'page' : undefined} className={`px-3 py-2 rounded ${current==='contact'?'bg-army-green text-white':'text-gray-700 hover:bg-gray-100'}`} onClick={()=>onNavigate('contact')}>ติดต่อ</button>
         </nav>
       </div>

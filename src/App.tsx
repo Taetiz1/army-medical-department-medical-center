@@ -9,8 +9,9 @@ import Rights from './pages/Rights'
 import Contact from './pages/Contact'
 import AfterTreatment from './pages/AfterTreatment'
 import News from './pages/News'
+import FAQ from './pages/FAQ'
 
-type PageKey = 'home' | 'steps' | 'clinics' | 'rights' | 'after' | 'news' | 'contact'
+type PageKey = 'home' | 'steps' | 'clinics' | 'rights' | 'after' | 'news' | 'faq' | 'contact'
 
 function App() {
   const [page, setPage] = useState<PageKey>('home')
@@ -25,6 +26,7 @@ function App() {
         {page === 'rights' && <Rights />}
         {page === 'after' && <AfterTreatment />}
         {page === 'news' && <News />}
+        {page === 'faq' && <FAQ />}
         {page === 'contact' && <Contact />}
       </main>
       <Footer />
