@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        'army-green': '#2E7D32',
-        'med-blue': '#1565C0',
+        'primary-green': '#21744A', // สีเขียวเข้มจากโลโก้
+        'gold': '#FFD700', // สีทอง
+        'dark': '#181818', // สีดำ
+        'light': '#F7F7F7', // สีพื้นหลังอ่อน
+        'accent-green': '#3CB371', // สีเขียวรอง
       },
       container: {
         center: true,

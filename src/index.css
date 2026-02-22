@@ -2,8 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 1s ease;
+  }
+  .animate-fade-in-down {
+    animation: fadeInDown 1s ease;
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease;
+  }
+  .animate-slide-in-left {
+    animation: slideInLeft 1s cubic-bezier(.4,0,.2,1);
+  }
+  .animate-slide-in-right {
+    animation: slideInRight 1s cubic-bezier(.4,0,.2,1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: none; }
+}
+
+
+@font-face {
+  font-family: 'SBModern';
+  src: url('/fonts/SB - Modern.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-sans: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-sans: 'SBModern', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 html, body, #root {
@@ -14,12 +62,30 @@ body {
   font-family: var(--font-sans);
   background-color: #F5F5F5;
   color: #0f172a;
+  font-size: 1.25rem; /* text-xl */
+}
+
+h1, .text-4xl, .text-5xl, .text-3xl, .text-2xl {
+  font-size: 2.5rem !important;
+}
+h2, .text-2xl, .text-xl {
+  font-size: 2rem !important;
+}
+h3, .text-lg {
+  font-size: 1.5rem !important;
+}
+h4, .text-base {
+  font-size: 1.125rem !important;
 }
 
 .logo-sm {
-  width: 44px;
-  height: 44px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
+  display: block;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
 }
 
 .card {

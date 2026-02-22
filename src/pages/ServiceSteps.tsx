@@ -1,6 +1,6 @@
 import React from 'react'
 import StepFlow from '../components/StepFlow'
-import flowchart from '../assets/flowchart.svg'
+// import flowchart from '../assets/flowchart.svg'
 
 const steps = [
   { title: 'ผู้มารับบริการใหม่ / นัดเดิม', desc: 'ลงทะเบียนหรือยืนยันการนัด' },
@@ -18,7 +18,7 @@ const ServiceSteps: React.FC = () => {
       <div className="bg-white p-6 rounded shadow">
         {/* Desktop: show flowchart image; Mobile: show step timeline */}
         <div className="hidden md:block">
-          <img src={flowchart} alt="flowchart" className="w-full h-auto rounded" />
+          {/* <img src={flowchart} alt="flowchart" className="w-full h-auto rounded" /> */}
         </div>
 
         <div className="block md:hidden">

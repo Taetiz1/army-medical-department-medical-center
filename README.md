@@ -19,7 +19,7 @@ If you are developing a production application, we recommend updating the config
 export default defineConfig([
   globalIgnores(['dist']),
   {
-    # ศูนย์พยาบาล กรมแพทย์ทหารบก — เว็บไซต์ข้อมูล
+    # สถานพยาบาลกรมแพทย์ทหารบก — เว็บไซต์ข้อมูล
 
     โปรเจกต์ตัวอย่างเว็บไซต์ให้ข้อมูลสถานพยาบาล (React + Vite + Tailwind)
 
