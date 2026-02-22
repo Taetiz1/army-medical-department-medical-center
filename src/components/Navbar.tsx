@@ -9,15 +9,17 @@ const Navbar: React.FC<any> = () => {
   const current = '';
   return (
     <header className="bg-primary-green shadow animate-fade-in-down">
-      <div className="container mx-auto px-2 md:px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
-        <div className="flex items-center gap-2 mb-2 md:mb-0">
-          <img src="/logo.png" alt="logo" className="logo-sm rounded-full bg-white p-1 animate-fade-in" />
-          <div>
-            <div className="font-bold text-2xl text-gold tracking-wide drop-shadow">สถานพยาบาลกรมแพทย์ทหารบก</div>
-            <div className="text-sm text-gold/80">Army Medical Department Medical Center</div>
+      <div className="container mx-auto px-2 md:px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-2 md:gap-0">
+        <div className="flex flex-col xs:flex-row items-center gap-2 mb-2 md:mb-0 w-full md:w-auto">
+          <div className="flex items-center gap-2 w-full md:w-auto justify-center md:justify-start">
+            <img src="/logo.png" alt="logo" className="logo-sm rounded-full bg-white p-1 animate-fade-in" />
+            <div>
+              <div className="font-bold text-xl md:text-2xl text-gold tracking-wide drop-shadow text-center md:text-left">สถานพยาบาลกรมแพทย์ทหารบก</div>
+              <div className="text-xs md:text-sm text-gold/80 text-center md:text-left">Army Medical Department Medical Center</div>
+            </div>
           </div>
         </div>
-        <nav className="flex gap-2" role="navigation" aria-label="เมนูหลัก">
+        <nav className="flex flex-wrap justify-center md:justify-end gap-1 md:gap-2 w-full md:w-auto mt-2 md:mt-0" role="navigation" aria-label="เมนูหลัก">
           {[
             {key:'home',label:'หน้าแรก'},
             {key:'steps',label:'ขั้นตอน'},
@@ -31,7 +33,7 @@ const Navbar: React.FC<any> = () => {
             <button
               key={item.key}
               aria-current={current===item.key ? 'page' : undefined}
-              className={`px-4 py-2 rounded-full font-semibold transition-all duration-200
+              className={`px-3 md:px-4 py-2 rounded-full font-semibold transition-all duration-200 text-xs md:text-base
                 ${current===item.key ? 'bg-gold text-dark shadow-md scale-105' : 'text-white hover:bg-gold/80 hover:text-dark hover:scale-105'}`}
               onClick={()=>handleNav(item.key)}
             >
