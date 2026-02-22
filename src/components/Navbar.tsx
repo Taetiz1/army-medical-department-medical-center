@@ -1,9 +1,5 @@
 import React from 'react'
 
-type Props = {
-  current: string
-  onNavigate: (p: any) => void
-}
 
 const Navbar: React.FC<any> = () => {
   const handleNav = (key: string) => {
