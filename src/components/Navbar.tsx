@@ -5,10 +5,6 @@ const Navbar: React.FC<any> = () => {
   const handleNav = (key: string) => {
     window.location.pathname = key === 'home' ? '/' : `/${key}`;
   };
-  const current = '';
-  return (
-    <header className="bg-primary-green shadow animate-fade-in-down">
-      <div className="container mx-auto px-2 md:px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
         <div className="flex items-center gap-2 mb-2 md:mb-0">
           <img src="/logo.png" alt="logo" className="logo-sm rounded-full bg-white p-1 animate-fade-in" />
           <div>

@@ -3,6 +3,7 @@ import ClinicCard from '../components/ClinicCard'
 
 const Home: React.FC = () => {
   type NewsType = { id: number; folder: string; title: string; };
+  type NewsType = { id: number; folder: string; title: string; };
   const [news, setNews] = React.useState<NewsType[]>([]);
   React.useEffect(() => {
     fetch('/news-data.json')
