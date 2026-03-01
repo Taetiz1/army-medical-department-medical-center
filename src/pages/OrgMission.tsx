@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 /* ─── Theme Colors ─── */
 const T = {
@@ -110,8 +110,17 @@ const sections = [
 ];
 
 /* ─── Org Chart ─── */
-const Box = ({ x, y, w = 130, h = 40, label, type = 'dept' }) => {
-  const styles = {
+type BoxType = 'board' | 'hq' | 'dept' | 'sub';
+interface BoxProps {
+  x: number;
+  y: number;
+  w?: number;
+  h?: number;
+  label: string;
+  type?: BoxType;
+}
+const Box = ({ x, y, w = 130, h = 40, label, type = 'dept' }: BoxProps) => {
+  const styles: Record<BoxType, { fill: string; stroke: string; text: string; fw: string; fs: number }> = {
     board: { fill: T.green,      stroke: T.green,    text: T.white,  fw: '600', fs: 12 },
     hq:    { fill: T.greenLight, stroke: T.greenMid, text: T.text,   fw: '600', fs: 12 },
     dept:  { fill: T.white,      stroke: T.gold,     text: T.text,   fw: '500', fs: 11 },
@@ -134,7 +143,13 @@ const Box = ({ x, y, w = 130, h = 40, label, type = 'dept' }) => {
   );
 };
 
-const Line = ({ x1, y1, x2, y2 }) => (
+interface LineProps {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+const Line = ({ x1, y1, x2, y2 }: LineProps) => (
   <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={T.connector} strokeWidth={1.5} strokeLinecap="round" />
 );
 
@@ -189,7 +204,14 @@ const OrgChart = () => {
 };
 
 /* ─── Accordion Item ─── */
-const AccordionItem = ({ num, title, children, isOpen, onToggle }) => (
+interface AccordionItemProps {
+  num: string;
+  title: string;
+  children: React.ReactNode;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+const AccordionItem = ({ num, title, children, isOpen, onToggle }: AccordionItemProps) => (
   <div
     className="rounded-xl overflow-hidden"
     style={{
@@ -241,7 +263,10 @@ const AccordionItem = ({ num, title, children, isOpen, onToggle }) => (
 );
 
 /* ─── Org Chart Modal ─── */
-const OrgChartModal = ({ onClose }) => (
+interface OrgChartModalProps {
+  onClose: () => void;
+}
+const OrgChartModal = ({ onClose }: OrgChartModalProps) => (
     <div
         className="fixed inset-0 flex items-center justify-center z-50 p-4"
         style={{ background: 'rgb(0, 0, 0, 0.5)', backdropFilter: 'blur(4px)' }}
@@ -279,10 +304,10 @@ const OrgChartModal = ({ onClose }) => (
 );
 
 /* ─── Main Page ─── */
-const OrgMission = () => {
-  const [open, setOpen] = useState({ '๑': true, '๒': true, '๓': true, '๔': true, '๕': true });
+const OrgMission: React.FC = () => {
+  const [open, setOpen] = useState<{ [key: string]: boolean }>({ '๑': true, '๒': true, '๓': true, '๔': true, '๕': true });
   const [showModal, setShowModal] = useState(false);
-  const toggle = (num) => setOpen(prev => ({ ...prev, [num]: !prev[num] }));
+  const toggle = (num: string) => setOpen(prev => ({ ...prev, [num]: !prev[num] }));
 
   return (
     <div style={{ fontFamily: "'Sarabun', sans-serif", background: '#f0f7f3', minHeight: '100vh' }}>
