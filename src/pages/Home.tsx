@@ -1,15 +1,21 @@
 import React from 'react'
 import ClinicCard from '../components/ClinicCard'
 
+const PREVIEW_COUNT = 3
+
 const Home: React.FC = () => {
-  type NewsType = { id: number; folder: string; title: string; };
-  // Remove duplicate NewsType declarations if any
+  type NewsType = { id: number; folder: string; title: string; date?: string; };
   const [news, setNews] = React.useState<NewsType[]>([]);
+
   React.useEffect(() => {
     fetch('/news-data.json')
       .then(res => res.json())
       .then(setNews);
   }, []);
+
+  const visibleNews = news.slice(0, PREVIEW_COUNT);
+  const hasMore = news.length > PREVIEW_COUNT;
+
   return (
     <div>
       <section className="rounded-2xl mb-8 overflow-hidden shadow-lg animate-fade-in">
@@ -28,20 +34,57 @@ const Home: React.FC = () => {
       </section>
 
       <section className="mb-10">
-        {/* News Slide Section */}
+        {/* News Section */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold mb-4 text-primary-green">ข่าวประชาสัมพันธ์</h2>
-          <div className="w-full overflow-x-auto">
-            <div className="flex gap-4">
-              {/* Dynamic news slide */}
-              {news && news.map(n => (
-                <a key={n.id} href={`/news/${n.id}`} className="block">
-                  <img src={`/news-img/${n.folder}/slide.jpg`} alt={n.title} className="rounded-xl shadow-lg w-64 h-40 object-cover" />
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl font-bold text-primary-green">ข่าวประชาสัมพันธ์</h2>
+          </div>
+
+          {news.length === 0 ? (
+            <p className="text-gray-400 text-sm">ไม่มีข่าวประชาสัมพันธ์ในขณะนี้</p>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {visibleNews.map(n => (
+                <a
+                  key={n.id}
+                  href={`/news/${n.id}`}
+                  className="group block rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-white"
+                >
+                  <div className="relative overflow-hidden h-36">
+                    <img
+                      src={`/news-img/${n.folder}/slide.jpg`}
+                      alt={n.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-sm font-semibold text-gray-800 line-clamp-2 leading-snug">{n.title}</p>
+                    {n.date && (
+                      <p className="text-xs text-gray-400 mt-1">{n.date}</p>
+                    )}
+                  </div>
                 </a>
               ))}
+
+              {/* See All Card — appears as the last card in the grid */}
+              {hasMore && (
+                <a
+                  href="/news"
+                  className="group flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-primary-green/40 hover:border-primary-green hover:bg-primary-green/5 transition-all duration-200 min-h-[10rem] gap-2"
+                >
+                  <div className="w-10 h-10 rounded-full bg-primary-green/10 group-hover:bg-primary-green/20 flex items-center justify-center transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-primary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <span className="text-sm font-semibold text-primary-green">ดูทั้งหมด</span>
+                  <span className="text-xs text-gray-400">{news.length} รายการ</span>
+                </a>
+              )}
             </div>
-          </div>
+          )}
         </section>
+
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white p-8 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform duration-300 animate-fade-in-up">
             <div className="text-5xl font-extrabold text-primary-green drop-shadow">7</div>

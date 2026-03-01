@@ -11,6 +11,7 @@ import News from './pages/News';
 import FAQ from './pages/FAQ';
 import NewsContent from './pages/NewsContent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import OrgMission from './pages/OrgMission';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/news/:id" element={<NewsContent />} />
+            <Route path="/org" element={<OrgMission />} />
           </Routes>
         </main>
         <Footer />

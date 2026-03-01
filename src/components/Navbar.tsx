@@ -21,12 +21,10 @@ const Navbar: React.FC<any> = () => {
         </div>
         <nav className="flex flex-wrap justify-center md:justify-end gap-1 md:gap-2 w-full md:w-auto mt-2 md:mt-0" role="navigation" aria-label="เมนูหลัก">
           {[
-            {key:'home',label:'หน้าแรก'},
-            {key:'steps',label:'ขั้นตอน'},
-            {key:'clinics',label:'คลินิก'},
-            {key:'rights',label:'สิทธิ'},
-            {key:'after',label:'หลังการรักษา'},
-            {key:'news',label:'ข่าว'},
+            {key:'home',label:'หน้าหลัก'},
+            {key:'org',label:'โครงสร้าง/ภารกิจ'},
+            {key:'clinics',label:'คลินิกเวชกรรม/ทันตกรรม/แพทย์ทางเลือก'},
+            {key:'news',label:'ข่าวประชาสัมพันธ์'},
             {key:'faq',label:'FAQ'},
             {key:'contact',label:'ติดต่อ'}
           ].map(item => (
