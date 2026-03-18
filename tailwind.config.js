@@ -12,6 +12,8 @@ export default {
         'dark': '#181818', // สีดำ
         'light': '#F7F7F7', // สีพื้นหลังอ่อน
         'accent-green': '#3CB371', // สีเขียวรอง
+        'army-green': '#2B3D1F', // สีเขียวทหาร
+        'army-green-light': '#3A5228', // สีเขียวทหารอ่อน
       },
       container: {
         center: true,
